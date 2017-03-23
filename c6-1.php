@@ -20,9 +20,29 @@ for($i = 0; $i < count($_FILES['m']['type']); $i++){
 	}
 }
 
-print_r(scandir('uploads/'));
-
-
-
-
+$dir = scandir('uploads/');
 ?>
+<style>
+	ul {
+		list-style: none;
+	}
+		ul li {
+			float: left;
+			width: 200px;
+			height: 150px;
+			margin: 10px;
+		}
+			ul li img {
+				width: 100%;
+				height: 100%;
+			}
+</style>
+<ul>
+	<?php foreach($dir as $file){ 
+		if($file != '.' && $file != '..'){
+	?>
+	<li>
+		<img src="uploads/<?=$file?>" alt="">
+	</li>
+	<?php }} ?>
+</ul>
